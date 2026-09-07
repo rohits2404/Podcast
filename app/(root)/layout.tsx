@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { LeftSidebar } from "@/components/LeftSidebar";
-import React from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { RightSidebar } from "@/components/RightSidebar";
+import { PodcastPlayer } from "@/components/PodcastPlayer";
+import React from "react";
 
 export default function MainLayout({
     children,
@@ -32,7 +33,7 @@ export default function MainLayout({
                 </section>
                 <RightSidebar />
             </main>
-            {/* TODO : Podcast Player */}
+            <PodcastPlayer />
         </div>
     );
 }
