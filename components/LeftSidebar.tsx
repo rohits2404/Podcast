@@ -7,7 +7,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export const LeftSidebar = () => {
-    
     const pathname = usePathname();
 
     return (
