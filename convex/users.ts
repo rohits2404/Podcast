@@ -1,5 +1,5 @@
 import { ConvexError, v } from "convex/values";
-import { internalMutation } from "./_generated/server";
+import { internalMutation, query } from "./_generated/server";
 
 export const createUser = internalMutation({
     args: {
@@ -81,5 +81,37 @@ export const deleteUser = internalMutation({
         }
 
         await ctx.db.delete(user._id);
+    },
+});
+
+// this query is used to get the top user by podcast count. first the podcast is sorted by views and then the user is sorted by total podcasts, so the user with the most podcasts will be at the top.
+export const getTopUserByPodcastCount = query({
+    args: {},
+    handler: async (ctx, args) => {
+        const user = await ctx.db.query("users").collect();
+
+        const userData = await Promise.all(
+            user.map(async (u) => {
+                const podcasts = await ctx.db
+                    .query("podcasts")
+                    .filter((q) => q.eq(q.field("authorId"), u.clerkId))
+                    .collect();
+
+                const sortedPodcasts = podcasts.sort(
+                    (a, b) => b.views - a.views,
+                );
+
+                return {
+                    ...u,
+                    totalPodcasts: podcasts.length,
+                    podcast: sortedPodcasts.map((p) => ({
+                        podcastTitle: p.podcastTitle,
+                        podcastId: p._id,
+                    })),
+                };
+            }),
+        );
+
+        return userData.sort((a, b) => b.totalPodcasts - a.totalPodcasts);
     },
 });
