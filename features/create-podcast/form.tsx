@@ -1,5 +1,6 @@
 "use client";
 
+import { GeneratePodcast } from "@/components/GeneratePodcast";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -146,7 +147,7 @@ export const CreatePodcastForm = () => {
                                     <FormControl>
                                         <Textarea
                                             className="input-class focus-visible:ring-offset-orange-1"
-                                            placeholder="Write a short podcast description"
+                                            placeholder="Write a Short Podcast Description"
                                             {...field}
                                         />
                                     </FormControl>
@@ -156,6 +157,15 @@ export const CreatePodcastForm = () => {
                         />
                     </div>
                     <div className="flex flex-col pt-10">
+                        <GeneratePodcast
+                            setAudioStorageId={setAudioStorageId}
+                            setAudio={setAudioUrl}
+                            voiceType={voiceType!}
+                            audio={audioUrl}
+                            voicePrompt={voicePrompt}
+                            setVoicePrompt={setVoicePrompt}
+                            setAudioDuration={setAudioDuration}
+                        />
                         <div className="mt-10 w-full">
                             <Button
                                 type="submit"
