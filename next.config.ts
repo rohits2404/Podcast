@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
                 protocol: "https",
                 hostname: "lovely-flamingo-139.convex.cloud",
             },
+            {
+                protocol: "https",
+                hostname: "img.clerk.com",
+            },
+            {
+                protocol: "https",
+                hostname: "brazen-mallard-518.convex.cloud",
+            },
         ],
     },
 };

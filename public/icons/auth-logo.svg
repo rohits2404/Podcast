@@ -1,0 +1,28 @@
+<svg width="240" height="64" viewBox="0 0 240 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="voxora-gradient" x1="4" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD166"/>
+      <stop offset="0.42" stop-color="#F97535"/>
+      <stop offset="1" stop-color="#E8462A"/>
+    </linearGradient>
+    <linearGradient id="voxora-dark" x1="10" y1="8" x2="55" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FD6D6D"/>
+      <stop offset="1" stop-color="#F97535"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Voxora podcast / voice mark -->
+  <g transform="translate(0 2)">
+    <path d="M17.2 54.3L10.7 58.2C5.7 61.2 0 57.7 0 51.9V10.1C0 4.2 5.7 0.7 10.7 3.8L24.4 12.1C23.8 12 23.1 11.9 22.5 11.9C16 11.9 10.7 17 10.4 23.4H15.6C16.4 23.4 17 24 17.1 24.8C17.1 25.7 16.4 26.4 15.6 26.4H10.4V29.3H15.6C16.4 29.3 17.1 30 17.1 30.8C17.1 31.6 16.4 32.3 15.6 32.3H10.4V35.2H15.6C16.4 35.2 17 35.9 17.1 36.7C17.1 37.6 16.4 38.3 15.6 38.3H10.4C10.7 44.7 16 49.8 22.5 49.8C22.7 49.8 22.9 49.8 23.1 49.8L20.6 52.5V55.8L20.4 55.9H18.3C17.7 55.9 17.3 56.3 17.2 57L17.2 54.3Z" fill="url(#voxora-gradient)"/>
+    <path d="M53.1 32.9L25.5 49.7V45.8C31.2 44.9 34.3 40.1 34.6 35.2H29.3C28.4 35.2 27.8 34.5 27.9 33.7C27.9 32.9 28.6 32.3 29.4 32.3H34.7V29.3H29.3C28.4 29.3 27.8 28.6 27.9 27.8C27.9 27 28.6 26.4 29.4 26.4H34.7V23.4H29.4C28.6 23.4 28 22.8 27.9 22C27.8 21.2 28.4 20.5 29.3 20.5H34.6C34.5 18 33.7 15.8 32.3 14L53.1 26.7C56.1 28.5 56.1 31.2 53.1 32.9Z" fill="url(#voxora-dark)"/>
+    <path d="M25.5 45.8C31.2 44.9 34.3 40.1 34.6 35.2H29.4C28.6 35.2 28 34.6 27.9 33.8C30.1 34.3 32.4 34.6 34.8 34.8C40.7 35.3 46.6 34.9 53.2 32.7L25.5 49.7V45.8Z" fill="#7A2D1A" opacity=".38"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="70" y="42"
+        font-family="Manrope, Inter, Arial, sans-serif"
+        font-size="31"
+        font-weight="800"
+        letter-spacing="-1.2"
+        fill="#FFFFFF">Voxora</text>
+</svg>
