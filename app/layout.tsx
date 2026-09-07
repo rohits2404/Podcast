@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ConvexClientProvider from "@/providers/ConvexClientProvider";
+import { AudioProvider } from "@/providers/AudioProvider";
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -44,7 +45,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                         },
                     }}
                 >
-                    <ConvexClientProvider>{children}</ConvexClientProvider>
+                    <ConvexClientProvider>
+                        <AudioProvider>{children}</AudioProvider>
+                    </ConvexClientProvider>
                 </ClerkProvider>
             </body>
         </html>

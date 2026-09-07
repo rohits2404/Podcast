@@ -7,6 +7,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth, useClerk } from "@clerk/nextjs";
 import { Button } from "./ui/button";
+import { useAudio } from "@/providers/AudioProvider";
 
 export const LeftSidebar = () => {
     const pathname = usePathname();
@@ -15,10 +16,12 @@ export const LeftSidebar = () => {
     const { isSignedIn } = useAuth();
     const { signOut } = useClerk();
 
+    const { audio } = useAudio();
+
     return (
         <section
             className={cn("left_sidebar h-[calc(100vh-5px)]", {
-                "h-[calc(100vh-116px)]": true,
+                "h-[calc(100vh-116px)]": audio?.audioUrl,
             })}
         >
             <nav className="flex flex-col gap-6">
@@ -80,7 +83,7 @@ export const LeftSidebar = () => {
                         asChild
                         className="text-16 w-full bg-orange-1 font-extrabold"
                     >
-                        <Link href="/sign-in">Sign in</Link>
+                        <Link href="/sign-in">Sign In</Link>
                     </Button>
                 )}
             </div>
