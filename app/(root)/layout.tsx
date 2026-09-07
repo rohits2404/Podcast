@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { RightSidebar } from "@/components/RightSidebar";
 import { PodcastPlayer } from "@/components/PodcastPlayer";
 import React from "react";
+import { MobileNav } from "@/components/MobileNav";
 
 export default function MainLayout({
     children,
@@ -23,7 +24,7 @@ export default function MainLayout({
                                 height={30}
                                 alt="menu icon"
                             />
-                            {/* TODO : Mobile Nav */}
+                            <MobileNav />
                         </div>
                         <div className="flex flex-col md:pb-14">
                             <Toaster />
