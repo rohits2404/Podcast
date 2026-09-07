@@ -1,6 +1,7 @@
 "use client";
 
 import { GeneratePodcast } from "@/components/GeneratePodcast";
+import { GenerateThumbnail } from "@/components/GenerateThumbnail";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -165,6 +166,13 @@ export const CreatePodcastForm = () => {
                             voicePrompt={voicePrompt}
                             setVoicePrompt={setVoicePrompt}
                             setAudioDuration={setAudioDuration}
+                        />
+                        <GenerateThumbnail
+                            setImage={setImageUrl}
+                            setImageStorageId={setImageStorageId}
+                            image={imageUrl}
+                            imagePrompt={imagePrompt}
+                            setImagePrompt={setImagePrompt}
                         />
                         <div className="mt-10 w-full">
                             <Button

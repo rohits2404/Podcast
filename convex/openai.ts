@@ -54,3 +54,76 @@ export const generateAudioAction = action({
         return audioBuffer;
     },
 });
+
+export const generateThumbnailAction = action({
+    args: {
+        prompt: v.string(),
+    },
+
+    handler: async (_, { prompt }) => {
+        const rapidApiKey = process.env.RAPIDAPI_KEY;
+
+        if (!rapidApiKey) {
+            throw new Error("RAPIDAPI_KEY is not configured");
+        }
+
+        const response = await fetch(
+            "https://ai-text-to-image-generator-flux-free-api.p.rapidapi.com/aaaaaaaaaaaaaaaaaiimagegenerator/quick.php",
+            {
+                method: "POST",
+                headers: {
+                    "x-rapidapi-key": rapidApiKey,
+                    "x-rapidapi-host":
+                        "ai-text-to-image-generator-flux-free-api.p.rapidapi.com",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    prompt,
+                    style_id: 4,
+                    size: "1-1",
+                }),
+            },
+        );
+
+        if (!response.ok) {
+            const errorText = await response.text();
+
+            throw new Error(
+                `Image generation failed: ${response.status} ${errorText}`,
+            );
+        }
+
+        const contentType = response.headers.get("content-type") ?? "";
+
+        // API returned raw image bytes
+        if (contentType.includes("image")) {
+            return await response.arrayBuffer();
+        }
+
+        const rawText = await response.text();
+
+        let result: any;
+
+        try {
+            result = JSON.parse(rawText);
+        } catch {
+            throw new Error(`Unexpected image response body: ${rawText}`);
+        }
+
+        const imageUrl = result?.final_result?.[0]?.origin;
+
+        if (!imageUrl) {
+            throw new Error(`Unexpected image response shape: ${rawText}`);
+        }
+
+        const imageResponse = await fetch(imageUrl);
+
+        if (!imageResponse.ok) {
+            throw new Error(
+                `Failed to download generated image: ${imageResponse.status}`,
+            );
+        }
+
+        return await imageResponse.arrayBuffer();
+    },
+});
