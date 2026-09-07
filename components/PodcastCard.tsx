@@ -1,19 +1,14 @@
-"use client";
-
+import { PodcastCardProps } from "@/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import React from "react";
 
 export const PodcastCard = ({
     imgUrl,
     title,
     description,
     podcastId,
-}: {
-    imgUrl: string;
-    title: string;
-    description: string;
-    podcastId: string;
-}) => {
+}: PodcastCardProps) => {
     const router = useRouter();
 
     const handleViews = () => {
